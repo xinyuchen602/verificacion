@@ -53,5 +53,17 @@ final class StringCalculatorTest extends TestCase
         
         $this->assertEquals("10", $result);
     }
+    /** 
+     * @test 
+     */
+    public function itShouldBeUseTwoDelimiter()
+    {
+        $StringCalculator = new StringCalculator();
+
+        $result = $StringCalculator->add("1,2\n3");
+        
+        $this->assertEquals("6", $result);
+    }
+    
 
 }
