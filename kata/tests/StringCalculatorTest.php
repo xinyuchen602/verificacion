@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Kata\Test;
 
 use Kata\StringCalculator;
@@ -16,7 +18,29 @@ final class StringCalculatorTest extends TestCase
 
         $result = $StringCalculator->add('');
 
-        $this->assertEquals(0, $result);
+        $this->assertEquals('0', $result);
+    }
+    /** 
+     * @test 
+     */
+    public function itShouldBeOne()
+    {
+        $StringCalculator = new StringCalculator();
+
+        $result = $StringCalculator->add("1");
+
+        $this->assertEquals("1", $result);
+    }
+    /** 
+     * @test 
+     */
+    public function itShouldBeThree()
+    {
+        $StringCalculator = new StringCalculator();
+
+        $result = $StringCalculator->add("1,2");
+
+        $this->assertEquals("3", $result);
     }
 
 }

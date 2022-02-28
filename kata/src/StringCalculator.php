@@ -4,9 +4,17 @@ namespace Kata;
 
 class StringCalculator
 {
-    function add(String $number1): String
+    function add($number1)
     {
-        return '0';
+        if (empty($number1)) {
+            return '0';
+        }
+        
+        $value = array_sum(explode(",",$str));
+        return strval($value);
     }
+    
+    
+    
 
 }
