@@ -10,7 +10,7 @@ class StringCalculator
             return '0';
         }
         
-        $value = array_sum(explode(",",$str));
+        $value = array_sum(explode(",",$number1));
         return strval($value);
     }
     
