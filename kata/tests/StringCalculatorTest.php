@@ -42,5 +42,16 @@ final class StringCalculatorTest extends TestCase
 
         $this->assertEquals("3", $result);
     }
+    /** 
+     * @test 
+     */
+    public function itShouldBeEquals()
+    {
+        $StringCalculator = new StringCalculator();
+
+        $result = $StringCalculator->add("1,2,3,4");
+        
+        $this->assertEquals("10", $result);
+    }
 
 }
