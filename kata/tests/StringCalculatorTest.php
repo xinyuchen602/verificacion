@@ -124,6 +124,23 @@ final class StringCalculatorTest extends TestCase
 
         $result = $kata->add("//;\n1;2,-2;");
     }
+    /** @test */
+    public function TestMultiplicar()
+    {
+        $kata = new Kata();
 
+        $this->setExpectedException(Exception::class);
+
+        $result = $kata->multi("//;\n1;2");
+    }
+    /** @test */
+    public function TestMultipleErrorMultiplicar()
+    {
+        $kata = new Kata();
+
+        $this->setExpectedException(Exception::class);
+
+        $result = $kata->multi("//;\n1;2,-2;");
+    }
 
 }
