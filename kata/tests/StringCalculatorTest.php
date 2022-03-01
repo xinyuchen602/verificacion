@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Kata\Test;
 
-use Kata\StringCalculator;
+use Kata\Kata;
 use PHPUnit\Framework\TestCase;
 
 final class StringCalculatorTest extends TestCase
@@ -14,9 +14,9 @@ final class StringCalculatorTest extends TestCase
      */
     public function itShouldBeZeroForEmptyString()
     {
-        $StringCalculator = new StringCalculator();
+        $Kata = new Kata();
 
-        $result = $StringCalculator->add('');
+        $result = $Kata->add('');
 
         $this->assertEquals('0', $result);
     }
@@ -25,9 +25,9 @@ final class StringCalculatorTest extends TestCase
      */
     public function itShouldBeOne()
     {
-        $StringCalculator = new StringCalculator();
+        $Kata = new Kata();
 
-        $result = $StringCalculator->add("1");
+        $result = $Kata->add("1");
 
         $this->assertEquals("1", $result);
     }
@@ -36,7 +36,7 @@ final class StringCalculatorTest extends TestCase
      */
     public function itShouldBeThree()
     {
-        $StringCalculator = new StringCalculator();
+        $StringCalculator = new Kata();
 
         $result = $StringCalculator->add("1,2");
 
@@ -47,7 +47,7 @@ final class StringCalculatorTest extends TestCase
      */
     public function itShouldBeEquals()
     {
-        $StringCalculator = new StringCalculator();
+        $StringCalculator = new Kata();
 
         $result = $StringCalculator->add("1,2,3,4");
         
@@ -58,11 +58,22 @@ final class StringCalculatorTest extends TestCase
      */
     public function itShouldBeUseTwoDelimiter()
     {
-        $StringCalculator = new StringCalculator();
+        $StringCalculator = new Kata();
 
         $result = $StringCalculator->add("1,2\n3");
         
         $this->assertEquals("6", $result);
+    }
+    /** 
+     * @test 
+     */
+    public function LastPosition()
+    {
+        $StringCalculator = new Kata();
+
+        $result = $StringCalculator->add("1,2\n");
+        
+        $this->assertEquals("Number excepted but EOF found", $result);
     }
     
 
