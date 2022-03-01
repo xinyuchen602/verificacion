@@ -9,17 +9,17 @@ class Kata
         if (empty($str)) {
             return "0";
         }
-        
         try {
+            $str2 = $str;
             $negative = "";
-            while (strpos($str, "-")){
-                $a = substr($str, strpos($str, "-"),2);
+            while (strpos($str2, "-")){
+                $a = substr($str2, strpos($str2, "-"),2);
                 $negative = $negative.$a." ";
-                $str = substr($str, strpos($str, "-")+2);
+                $str2 = substr($str2, strpos($str2, "-")+2);
             }
             throw new Exception("Negative not allown: ".$negative );
         } catch (Exception $e) {
-            return $e->getMessage();
+            $error = $e->getMessage();
         }
 
         $delimiter = substr($str,2,1);  
@@ -30,11 +30,11 @@ class Kata
                 
             }
             else{
-                return $delimiter." expected but ".$str[$i]." found at position ".$i;
+                $error = $error.$delimiter." expected but ".$str[$i]." found at position ".$i;
             }
         }
 
-        if (empty(strpos($str,"\n")){
+        if (empty(strpos($str,"\n")) and empty($error)){
             $value = array_sum(explode($delimiter,$str));
             return strval($value);
 	}
@@ -43,14 +43,19 @@ class Kata
         $strTodoDel = str_replace("\n",$delimiter,$str);
 
         if (strcmp(strlen($strTodoDel)-1,strripos($strTodoDel,$delimiter)) == 0){
-            return "Number excepted but EOF found";
+            $error = $error." Number excepted but EOF found ";
         }
 
         $strTodoDel = explode($delimiter,$strTodoDel);
         
         if (in_array("",$strTodoDel)){
             $frase = "Number expected but \n found at position ";
-            return $frase.$posicion;
+            $error = $error.$frase.$posicion;
+            try {
+                throw new Exception($error);
+            } catch (Exception $e) {
+                return $e->getMessage();
+            }
 	}
 	$value = array_sum($strTodoDel);
 	return strval($value);

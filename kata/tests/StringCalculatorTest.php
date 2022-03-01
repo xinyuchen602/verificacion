@@ -104,16 +104,25 @@ final class StringCalculatorTest extends TestCase
 
         $result = $kata->add("//;\n1;2");
 
-        $this->assertEquals(3,$result);
+        $this->assertEquals("3",$result);
     }
     /** @test */
-    public function itShouldThrowExceptionWhenNegativeNumbers()
+    public function TestValorNegativo()
     {
         $kata = new Kata();
 
         $this->setExpectedException(Exception::class);
 
-        $result = $kata->add('-1,2');
+        $result = $kata->add("-1,2");
+    }
+    /** @test */
+    public function TestMultipleError()
+    {
+        $kata = new Kata();
+
+        $this->setExpectedException(Exception::class);
+
+        $result = $kata->add("//;\n1;2,-2;");
     }
 
 
