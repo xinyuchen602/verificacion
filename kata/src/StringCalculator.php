@@ -7,8 +7,21 @@ class Kata
     function add($str)
     {
         if (empty($str)) {
-            return '0';
+            return "0";
         }
+        
+        try {
+            $negative = "";
+            while (strpos($str, "-")){
+                $a = substr($str, strpos($str, "-"),2);
+                $negative = $negative.$a." ";
+                $str = substr($str, strpos($str, "-")+2);
+            }
+            throw new Exception("Negative not allown: ".$negative );
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+
         $delimiter = substr($str,2,1);  
         $str = substr($str, 4);
         
