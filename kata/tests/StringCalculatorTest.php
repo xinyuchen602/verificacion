@@ -12,7 +12,7 @@ final class StringCalculatorTest extends TestCase
     /**
      * @test
      */
-    public function itShouldBeZeroForEmptyString()
+    public function tieneQueSerCero()
     {
         $Kata = new Kata();
 
@@ -23,7 +23,7 @@ final class StringCalculatorTest extends TestCase
     /** 
      * @test 
      */
-    public function itShouldBeOne()
+    public function ValeUno()
     {
         $Kata = new Kata();
 
@@ -34,7 +34,7 @@ final class StringCalculatorTest extends TestCase
     /** 
      * @test 
      */
-    public function itShouldBeThree()
+    public function ValeTres()
     {
         $StringCalculator = new Kata();
 
@@ -75,6 +75,37 @@ final class StringCalculatorTest extends TestCase
         
         $this->assertEquals("Number excepted but EOF found", $result);
     }
-    
+    /** 
+     * @test 
+     */
+    public function ComprobaSeparateLine()
+    {
+        $kata = new Kata();
+
+        $result = $kata->separateLine("//;\n1;2");
+
+        $this->assertTrue($result);
+    }
+    /** 
+     * @test 
+     */
+    public function ComprobaSeparateN()
+    {
+        $kata = new Kata();
+
+        $result = $kata->separateN("//;\n1;2");
+
+        $this->assertTrue($result);
+    }
+    /** @test */
+    public function CustomSeparator()
+    {
+        $kata = new Kata();
+
+        $result = $kata->add("//;\n1;2");
+
+        $this->assertEquals(3,$result);
+    }
+
 
 }
